@@ -16,7 +16,7 @@ mt_site_vlan="1103"
 mt_site_ip_full="100.64.245.153/29"
 
 mt_customer_port="2"
-mt_customer_ip_full="206.53.184.108/30"
+mt_customer_ip_full="286.53.184.158/30"
 mt_customer_region="COH"
 mt_customer_name="RAB"
 mt_customer_speed="30M/30M"
@@ -337,7 +337,7 @@ if ex_stage_3:
 if ex_stage_2:
     print ("\r")
     print ("/snmp community")
-    print ("add addresses=100.64.0.0/16,172.31.0.0/16 name=bluewavesnmp")
+    print ("add addresses=100.64.0.0/16,172.31.0.0/16 name=bluewavexxsnmp")
 
 # /interface bridge port
 if ex_stage_3:
@@ -400,7 +400,7 @@ if ex_stage_3:
         print ("\r")
         print ("/ip dhcp-server network")
     if ex_dia:
-        print ("add address="+mt_public_network_ip_full+" dns-server=206.53.177.3,206.53.177.2 gateway="+str(ipaddress.ip_interface(mt_customer_ip_full).ip))
+        print ("add address="+mt_public_network_ip_full+" dns-server=286.53.177.3,286.53.177.2 gateway="+str(ipaddress.ip_interface(mt_customer_ip_full).ip))
     if ex_wifi:
         print ("add address=10.120."+mt_oct4+".0/24 dns-server=8.8.8.8 domain=bluewave.bm gateway=10.120."+mt_oct4+".1")
         print ("add address=10.130."+mt_oct4+".0/24 dns-server=8.8.8.8 domain=bluewave.bm gateway=10.130."+mt_oct4+".1")
@@ -537,7 +537,7 @@ if ex_stage_3:
 if ex_stage_2:
     print ("\r")
     print ("/snmp")
-    print ("set contact=info@bluewave.bm enabled=yes location="+chr(34)+"BM;"+mt_customer_region+";"+mt_customer_name.upper()+chr(34)+" trap-community=bluewavesnmp")
+    print ("set contact=info@bluewave.bm enabled=yes location="+chr(34)+"BM;"+mt_customer_region+";"+mt_customer_name.upper()+chr(34)+" trap-community=bluewavexxsnmp")
 
 # /system clock
 if ex_stage_1:
@@ -579,7 +579,7 @@ if ex_stage_1:
 if ex_stage_1:
     print ("\r")
     print ("/user")
-    print ("add name=backupuser password=kmnr742apfAR group=full\n")
+    print ("add name=backupuser password=kmn group=full\n")
 
 
 
@@ -643,7 +643,7 @@ if ex_upstream:
             print ("add area=backbone network="+mt_ospf_network_ip+"\n")
 
 
-    # Site1 
+    # Site
 
     if ex_v2000 or ex_v3000 or ex_stage_5:
         print ("\r")
@@ -672,7 +672,7 @@ if ex_upstream:
             print ("/routing bgp peer")
             print ("add address-families=ip,vpnv4 name=BW-BM-"+mt_customer_region+"-"+mt_customer_name.upper()+"-PE-1 remote-address="+mt_id+" remote-as=65530 route-reflect=yes ttl=default update-source=loopback")
 
-    # TBi
+    # TBC
 
     if ex_v2000 or ex_v3000 or ex_stage_5:
         print ("\r")
